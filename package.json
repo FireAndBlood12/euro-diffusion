@@ -1,0 +1,32 @@
+{
+  "name": "euro-diffusion",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Oleksii Atamaniuk",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node ./dist/src/main.js",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest"
+  },
+  "engines": {
+    "node": "v16.15.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.164",
+    "@types/node": "^14.14.6",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.12.0",
+    "jest": "^26.6.1",
+    "prettier": "^2.6.2",
+    "ts-jest": "^26.4.3",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
