@@ -1,25 +1,6 @@
 import City from './city';
 import Country from './country';
-
-type Coordinates = { x: number; y: number };
-
-class GridDictionary {
-  private map = new Map<string, City>();
-
-  private key(coords: Coordinates) {
-    return `${coords.x}-${coords.y}`;
-  }
-
-  set(coords: Coordinates, value: City) {
-    const key = this.key(coords);
-    this.map.set(key, value);
-  }
-
-  get(coords: Coordinates) {
-    const key = this.key(coords);
-    return this.map.get(key);
-  }
-}
+import GridDictionary from './gridDictionary';
 
 export class MapGrid {
   countries: Country[];
@@ -149,7 +130,11 @@ export class MapGrid {
 
   static diffusionResultToString(diffusionResult: Map<string, number>): string {
     const results = [];
-    for (const [countryName, days] of diffusionResult.entries()) {
+    const sortedResults = [...diffusionResult].sort(
+      (r1, r2) => r1[1] - r2[1] || r1[0].localeCompare(r2[0]),
+    );
+
+    for (const [countryName, days] of sortedResults) {
       results.push(`${countryName} ${days}`);
     }
     return results.join('\n');

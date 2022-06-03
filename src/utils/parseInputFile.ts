@@ -5,11 +5,7 @@ export const parseInputFile = (filename: string): string[][] => {
     throw new Error('Filename is required');
   }
   const countryStrings: string[][] = [];
-  const lines = fs
-    .readFileSync(filename)
-    .toString()
-    .split('\n')
-    .map((line) => line.replace('\r', ''));
+  const lines = fs.readFileSync(filename).toString().split(/\r?\n/);
 
   let lineIndex = 0;
   while (lineIndex < lines.length - 2) {

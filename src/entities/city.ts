@@ -1,3 +1,6 @@
+const INITIAL_COINS_COUNT = 1000000;
+const REPRESENTATIVE_PORTION = INITIAL_COINS_COUNT / 1000;
+
 export class City {
   coinTypes: string[];
   countryName: string;
@@ -9,8 +12,8 @@ export class City {
   constructor(
     coinTypes: string[],
     countryName: string,
-    initialCoinsCount = 1000000,
-    representativePortion = 1000,
+    initialCoinsCount = INITIAL_COINS_COUNT,
+    representativePortion = REPRESENTATIVE_PORTION,
   ) {
     this.countryName = countryName;
     this.coinTypes = coinTypes;
