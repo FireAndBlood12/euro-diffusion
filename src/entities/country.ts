@@ -12,6 +12,8 @@ export class Country {
   name: string;
   coordinates: CountryCoordinates;
   static NAME_MAX_LENGTH = 25;
+  static MIN_COORDINATE = 1;
+  static MAX_COORDINATE = 10;
 
   constructor(name: string, coordinates: CountryCoordinates) {
     if (!Country.areCoordinatesValid(coordinates)) {
@@ -31,7 +33,8 @@ export class Country {
     const isCorrectLowHighRange = (low: number, high: number) => low <= high;
 
     const isCoordinateInBounds = (coordinate: number) =>
-      coordinate >= 1 && coordinate <= 10;
+      coordinate >= Country.MIN_COORDINATE &&
+      coordinate <= Country.MAX_COORDINATE;
 
     return (
       [xl, yl, xh, yh].every(isCoordinateInBounds) &&

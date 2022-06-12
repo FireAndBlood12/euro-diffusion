@@ -36,16 +36,8 @@ export class MapGrid {
   addCitiesToCountries(): void {
     const coinTypes = this.countries.map((country) => country.name);
     this.countries.forEach((country, countryIndex) => {
-      for (
-        let x = country.coordinates.xl;
-        x <= country.coordinates.xh;
-        x += 1
-      ) {
-        for (
-          let y = country.coordinates.yl;
-          y <= country.coordinates.yh;
-          y += 1
-        ) {
+      for (let x = country.coordinates.xl; x <= country.coordinates.xh; x++) {
+        for (let y = country.coordinates.yl; y <= country.coordinates.yh; y++) {
           const city = new City(coinTypes, country.name);
           this.countriesGrid.set({ x, y }, city);
           this.countries[countryIndex].addCity(city);
@@ -55,8 +47,8 @@ export class MapGrid {
   }
 
   addNeighborsToCities(): void {
-    for (let x = this.minX; x <= this.maxX; x += 1) {
-      for (let y = this.minY; y <= this.maxY; y += 1) {
+    for (let x = this.minX; x <= this.maxX; x++) {
+      for (let y = this.minY; y <= this.maxY; y++) {
         const city = this.countriesGrid.get({ x, y });
         if (!city) {
           continue;
@@ -116,7 +108,7 @@ export class MapGrid {
           city.updateCoins();
         });
       });
-      currentDay += 1;
+      currentDay++;
     }
 
     this.countries.forEach(({ name }) => {

@@ -12,7 +12,7 @@ export const parseInputFile = (filename: string): string[][] => {
     const currentLine = lines[lineIndex];
     const countryNumber = parseInt(currentLine);
     if (countryNumber) {
-      lineIndex += 1; // move to first country line
+      lineIndex++; // move to first country line
       const countries = [];
       for (
         let countryLineIndex = lineIndex;
